@@ -173,13 +173,13 @@ class MainActivity : AppCompatActivity() {
         val decoration = AddressAdapterDecoration()
         recyclerView.addItemDecoration(decoration)
 
-        // Spinner list
+
         val adList = resources.getStringArray(R.array.spinnerArray)
         val adAdapter =
             ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, adList)
         binding.spinner.adapter = adAdapter
 
-        // 클릭한 데이터 상세페이지로 넘기기
+
         adapter.itemClick = object : MyAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val clickedItem = dataList[position]
@@ -191,7 +191,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // floating button
+
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 700 }
         val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 700 }
         var isTop = true
@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
             binding.recyclerView.smoothScrollToPosition(0)
         }
 
-        // Notification
+
         binding.notiButton.setOnClickListener {
             showNotification()
         }
@@ -276,22 +276,5 @@ class MainActivity : AppCompatActivity() {
             setContentText("설정한 키워드에 대한 알림이 도착했습니다!!")
         }
         manager.notify(11, builder.build())
-    }
-
-    // 뒤로가기 버튼 클릭 시 종료 다이얼로그
-    override fun onBackPressed() {
-
-        val alertDialog = AlertDialog.Builder(this)
-            .setIcon(R.drawable.chat)
-            .setTitle("종료")
-            .setMessage("정말로 종료하시겠습니까?")
-            .setPositiveButton("확인") { dialog, _ ->
-                finish()
-            }
-            .setNegativeButton("취소") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
-        super.onBackPressed()
     }
 }

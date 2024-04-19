@@ -15,9 +15,7 @@ class MyAdapter(private val mItems: MutableList<MyItem>) : RecyclerView.Adapter<
     interface ItemClick {
         fun onClick(view : View, position : Int)
     }
-    interface LongItemClick {
-        fun onLongClick(view : View, position : Int)
-    }
+
     var itemClick : ItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
